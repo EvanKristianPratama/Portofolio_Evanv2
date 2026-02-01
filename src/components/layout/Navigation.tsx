@@ -5,11 +5,15 @@ const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const scrollToSection = (id: string) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-            setIsOpen(false);
+        if (id === 'home') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
         }
+        setIsOpen(false);
     };
 
     const links = [

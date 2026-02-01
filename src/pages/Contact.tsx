@@ -12,9 +12,9 @@ const Contact = () => {
             </a>
 
             <div style={{ display: 'flex', gap: '2rem', marginTop: 'auto' }}>
-                <a href="#">LinkedIn</a>
-                <a href="#">GitHub</a>
-                <a href="#">Twitter/X</a>
+                <a href="https://www.linkedin.com/in/evan-pratama-196119271/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/EvanKristianPratama" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.instagram.com/evankristiannn/" target="_blank" rel="noopener noreferrer">Instagram</a>
             </div>
 
             <footer style={{ marginTop: '4rem', fontSize: '0.9rem', opacity: 0.5 }}>

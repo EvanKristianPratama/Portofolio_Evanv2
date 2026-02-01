@@ -22,7 +22,7 @@ const About = () => {
                     custom={0}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-10%" }}
+                    viewport={{ once: false, margin: "-10%" }}
                     variants={revealVariants}
                     style={{
                         fontSize: 'clamp(3rem, 6vw, 5rem)',
@@ -43,7 +43,7 @@ const About = () => {
                             custom={1}
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: true, margin: "-10%" }}
+                            viewport={{ once: false, margin: "-10%" }}
                             variants={revealVariants}
                             style={{
                                 fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
@@ -59,7 +59,7 @@ const About = () => {
                             custom={2}
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: true, margin: "-10%" }}
+                            viewport={{ once: false, margin: "-10%" }}
                             variants={revealVariants}
                             style={{
                                 fontSize: 'clamp(1rem, 1.5vw, 1.25rem)',
@@ -84,7 +84,7 @@ const About = () => {
                                 custom={3 + i}
                                 initial="hidden"
                                 whileInView="visible"
-                                viewport={{ once: true, margin: "-10%" }}
+                                viewport={{ once: false, margin: "-10%" }}
                                 variants={revealVariants}
                                 style={{ borderTop: '1px solid rgba(0,0,0,0.2)', paddingTop: '1rem' }}
                             >
