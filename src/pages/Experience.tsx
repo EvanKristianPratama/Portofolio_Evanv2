@@ -28,9 +28,9 @@ const Experience = () => {
         }}>
             <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
                 <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+                    whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                    viewport={{ once: false, margin: '-10%' }}
                     transition={{ duration: 0.8 }}
                     style={{
                         fontSize: 'clamp(2.5rem, 5vw, 4rem)',
@@ -47,9 +47,9 @@ const Experience = () => {
                     {experiences.map((exp, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+                            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                            viewport={{ once: false, margin: '-10%' }}
                             transition={{ delay: i * 0.1, duration: 0.6 }}
                             style={{
                                 borderTop: '1px solid rgba(0,0,0,0.1)',

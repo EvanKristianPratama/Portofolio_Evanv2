@@ -7,37 +7,43 @@ const projects = [
         title: "COBIT 2019",
         desc: "Enterprise IT Governance Audit Tool.",
         tags: ["React", "Laravel", "Enterprise"],
-        img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop"
+        img: "https://s0.wp.com/mshots/v1/https%3A%2F%2Fcobit2019.divusi.co.id%2Flogin?w=800",
+        link: "https://cobit2019.divusi.co.id/login"
     },
     {
         title: "LDR Photobooth",
         desc: "IoT-connected remote photobooth system.",
-        tags: ["IoT", "React", "Raspberry Pi"],
-        img: "https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?q=80&w=800&auto=format&fit=crop"
+        tags: ["Cloudflare Workers", "WebSockets"],
+        img: "https://s0.wp.com/mshots/v1/https%3A%2F%2Fldr-photobooth.vercel.app%2F?w=800",
+        link: "https://ldr-photobooth.vercel.app/"
     },
     {
         title: "Pratama Global Export",
         desc: "International trade & export profile platform.",
-        tags: ["Next.js", "Global Trade"],
-        img: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800&auto=format&fit=crop"
+        tags: ["Bootstrap", "Global Trade"],
+        img: "https://s0.wp.com/mshots/v1/https%3A%2F%2Fpratamaglobalekspor.netlify.app%2F?w=800",
+        link: "https://pratamaglobalekspor.netlify.app/"
     },
     {
         title: "Panen-Ku",
         desc: "Agriculture marketplace connecting farmers to buyers.",
         tags: ["React Native", "Firebase", "AgriTech"],
-        img: "https://images.unsplash.com/photo-1625246333195-58197bd47d19?q=80&w=800&auto=format&fit=crop"
+        img: "https://s0.wp.com/mshots/v1/https%3A%2F%2Fpanen-ku.vercel.app%2F?w=800",
+        link: "https://panen-ku.vercel.app/"
     },
     {
         title: "Chat Bot Semantic AI",
         desc: "NLP-powered conversational AI assistant.",
         tags: ["Python", "NLP", "AI"],
-        img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop"
+        img: "https://s0.wp.com/mshots/v1/https%3A%2F%2Fchatbotsmartphone.vercel.app%2F?w=800",
+        link: "https://chatbotsmartphone.vercel.app/"
     },
     {
         title: "Space Runner Game",
         desc: "3D browser-based infinite runner.",
         tags: ["Three.js", "WebGL", "Game Dev"],
-        img: "https://images.unsplash.com/photo-1614726365723-49cfae92782f?q=80&w=800&auto=format&fit=crop"
+        img: "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftubes-uas-grafkom.vercel.app%2F?w=800",
+        link: "https://tubes-uas-grafkom.vercel.app/"
     }
 ];
 
@@ -60,7 +66,15 @@ const Projects = () => {
             ref={containerRef}
             className="projects-section"
         >
-            <h2 className="section-title">Selected Works</h2>
+            <motion.h2
+                className="section-title"
+                initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                viewport={{ once: false, margin: '-10%' }}
+                transition={{ duration: 0.8 }}
+            >
+                Selected Works
+            </motion.h2>
 
             {/* Floating Image Container */}
             <div className="project-image-reveal">
@@ -99,11 +113,15 @@ const Projects = () => {
             {/* Project List */}
             <div className="projects-list">
                 {projects.map((proj, i) => (
-                    <div
+                    <a
                         key={i}
+                        href={proj.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="project-item"
                         onMouseEnter={() => setActiveProject(i)}
                         onMouseLeave={() => setActiveProject(null)}
+                        style={{ textDecoration: 'none', color: 'inherit' }}
                     >
                         <div className="project-header">
                             <span className="project-index">0{i + 1}</span>
@@ -115,7 +133,7 @@ const Projects = () => {
                                 {proj.tags.map(tag => <span key={tag} className="tag">{tag}</span>)}
                             </div>
                         </div>
-                    </div>
+                    </a>
                 ))}
             </div>
 

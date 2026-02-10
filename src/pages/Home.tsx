@@ -53,7 +53,7 @@ const Home = () => {
                             whiteSpace: 'nowrap',
                             margin: 0
                         }}>
-                            evankristian.dev
+                            evanKristianPratama
                         </h1>
                         <p style={{
                             fontSize: '1rem',
