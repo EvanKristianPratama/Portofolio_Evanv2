@@ -5,6 +5,17 @@ const Loader = ({ onComplete }: { onComplete: () => void }) => {
     const [progress, setProgress] = useState(0);
     const [isExiting, setIsExiting] = useState(false);
 
+    const messages = [
+        "Hi its me",
+        "Evan Kristian Pratama",
+        "hehehe!",
+        "thank you for stopping by!",
+        "hope you enjoy my work!",
+        "stay awesome! ✨"
+    ];
+
+    const [msgIndex, setMsgIndex] = useState(0);
+
     useEffect(() => {
         const interval = setInterval(() => {
             setProgress(prev => {
@@ -14,11 +25,14 @@ const Loader = ({ onComplete }: { onComplete: () => void }) => {
                     setTimeout(onComplete, 1200);
                     return 100;
                 }
-                return prev + Math.random() * 15;
+                const nextProgress = prev + Math.random() * 6;
+                // Update message index based on progress
+                setMsgIndex(Math.min(Math.floor((nextProgress / 100) * messages.length), messages.length - 1));
+                return nextProgress;
             });
-        }, 100);
+        }, 300);
         return () => clearInterval(interval);
-    }, [onComplete]);
+    }, [onComplete, messages.length]);
 
     return (
         <motion.div
@@ -31,10 +45,12 @@ const Loader = ({ onComplete }: { onComplete: () => void }) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                pointerEvents: isExiting ? 'none' : 'auto'
+                pointerEvents: isExiting ? 'none' : 'auto',
+                background: 'black'
             }}
         >
-            {/* Left Curtain */}
+            {/* Curtain background removed to allow text to be centered on solid black during load, 
+                or we can keep curtains but ensure background is consistent */}
             <motion.div
                 initial={{ x: 0 }}
                 animate={{ x: isExiting ? '-100%' : 0 }}
@@ -43,12 +59,12 @@ const Loader = ({ onComplete }: { onComplete: () => void }) => {
                     position: 'absolute',
                     top: 0,
                     left: 0,
-                    width: '50%',
+                    width: '50.5%', // overlap slightly to prevent seam
                     height: '100%',
-                    background: 'black'
+                    background: 'black',
+                    zIndex: -1
                 }}
             />
-            {/* Right Curtain */}
             <motion.div
                 initial={{ x: 0 }}
                 animate={{ x: isExiting ? '100%' : 0 }}
@@ -57,9 +73,10 @@ const Loader = ({ onComplete }: { onComplete: () => void }) => {
                     position: 'absolute',
                     top: 0,
                     right: 0,
-                    width: '50%',
+                    width: '50.5%',
                     height: '100%',
-                    background: 'black'
+                    background: 'black',
+                    zIndex: -1
                 }}
             />
 
@@ -72,22 +89,29 @@ const Loader = ({ onComplete }: { onComplete: () => void }) => {
                     zIndex: 1,
                     textAlign: 'center',
                     color: 'white',
-                    fontFamily: 'Inter, sans-serif'
+                    fontFamily: 'Inter, sans-serif',
+                    width: '100%',
+                    padding: '0 2rem'
                 }}
             >
-                <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    style={{
-                        fontSize: 'clamp(2rem, 5vw, 4rem)',
-                        fontWeight: 800,
-                        letterSpacing: '-0.02em',
-                        marginBottom: '2rem'
-                    }}
-                >
-                    evankristian.dev
-                </motion.h1>
+                <div style={{ height: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '2rem' }}>
+                    <motion.h1
+                        key={msgIndex}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.4 }}
+                        style={{
+                            fontSize: 'clamp(1.5rem, 4vw, 3rem)',
+                            fontWeight: 800,
+                            letterSpacing: '-0.02em',
+                            margin: 0,
+                            textTransform: 'uppercase'
+                        }}
+                    >
+                        {messages[msgIndex]}
+                    </motion.h1>
+                </div>
 
                 <div style={{ width: '200px', height: '2px', background: 'rgba(255,255,255,0.2)', borderRadius: '2px', overflow: 'hidden', margin: '0 auto' }}>
                     <motion.div

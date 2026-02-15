@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { experiences } from '../data/experience';
+import { calculateDuration } from '../utils/date';
 
 const Experience = () => {
     return (
@@ -53,7 +54,9 @@ const Experience = () => {
                                 {/* Left: Role & Date */}
                                 <div>
                                     <h3 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '0.5rem' }}>{exp.company}</h3>
-                                    <span style={{ display: 'block', fontSize: '1rem', opacity: 0.5, marginBottom: '1rem' }}>{exp.period}</span>
+                                    <span style={{ display: 'block', fontSize: '1rem', opacity: 0.5, marginBottom: '1rem' }}>
+                                        {exp.period} • {calculateDuration(exp.startDate, exp.endDate)}
+                                    </span>
                                 </div>
 
                                 {/* Right: Details */}

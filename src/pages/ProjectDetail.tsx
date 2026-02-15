@@ -82,14 +82,14 @@ const ProjectDetail = () => {
                     <motion.button
                         className="back-btn"
                         onClick={() => navigate(-1)}
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.3 }}
+                        initial={{ opacity: 0, scale: 0.5, filter: 'blur(10px)' }}
+                        animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                        exit={{ opacity: 0, scale: 0.3, filter: 'blur(10px)' }}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         transition={{
-                            duration: 0.2,
-                            ease: "circOut"
+                            duration: 0.4,
+                            ease: [0.22, 1, 0.36, 1]
                         }}
                     >
                         <span>BACK</span>

@@ -1,4 +1,5 @@
 import { motion, type Variants } from 'framer-motion';
+import { calculateTotalYears } from '../utils/date';
 
 const revealVariants: Variants = {
     hidden: { opacity: 0, filter: "blur(10px)", y: 20 },
@@ -76,7 +77,7 @@ const About = () => {
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', marginTop: '2rem' }}>
                         {[
                             { label: "Location", value: "Indonesia" },
-                            { label: "Experience", value: "1 Year" },
+                            { label: "Experience", value: calculateTotalYears('2024-05-01') },
                             { label: "Focus", value: "Fullstack Engineer" },
                         ].map((item, i) => (
                             <motion.div

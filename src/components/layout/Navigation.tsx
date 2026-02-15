@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 
+
 const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
@@ -16,7 +17,8 @@ const Navigation = () => {
     }, []);
 
     const isHome = location.pathname === '/';
-    const shouldShowBurger = !isHome || scrolled;
+    const isDetail = location.pathname.startsWith('/experience/') || location.pathname.startsWith('/project/');
+    const shouldShowBurger = !isDetail && (!isHome || scrolled);
 
     const scrollToSection = (id: string) => {
         if (id === 'home') {
@@ -40,6 +42,22 @@ const Navigation = () => {
 
     return (
         <>
+            {/* Brand Logo */}
+            <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                style={{
+                    position: 'fixed',
+                    top: '2rem',
+                    left: '2rem',
+                    zIndex: 9999,
+                    cursor: 'pointer',
+                    mixBlendMode: 'difference'
+                }}
+                onClick={() => isHome ? scrollToSection('home') : window.location.href = '/'}
+            >
+            </motion.div>
+
             {/* Hamburger Button */}
             <AnimatePresence>
                 {shouldShowBurger && (

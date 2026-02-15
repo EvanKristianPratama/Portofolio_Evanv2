@@ -2,6 +2,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { experiences } from '../data/experience';
+import { calculateDuration } from '../utils/date';
 
 const ExperienceDetail = () => {
     const { slug } = useParams<{ slug: string }>();
@@ -82,14 +83,14 @@ const ExperienceDetail = () => {
                     <motion.button
                         className="back-btn"
                         onClick={() => navigate(-1)}
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.3 }}
+                        initial={{ opacity: 0, scale: 0.5, filter: 'blur(10px)' }}
+                        animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                        exit={{ opacity: 0, scale: 0.3, filter: 'blur(10px)' }}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         transition={{
-                            duration: 0.2,
-                            ease: "circOut"
+                            duration: 0.4,
+                            ease: [0.22, 1, 0.36, 1]
                         }}
                     >
                         <span>BACK</span>
@@ -116,7 +117,7 @@ const ExperienceDetail = () => {
                     </motion.h1>
                     <motion.div variants={itemVariants} className="experience-role-period">
                         <h2>{exp.role}</h2>
-                        <span>{exp.period}</span>
+                        <span>{exp.period} • {calculateDuration(exp.startDate, exp.endDate)}</span>
                     </motion.div>
                 </header>
 
