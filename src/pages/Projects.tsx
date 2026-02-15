@@ -1,51 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-// Real Projects Data
-const projects = [
-    {
-        title: "COBIT 2019",
-        desc: "Enterprise IT Governance Audit Tool.",
-        tags: ["React", "Laravel", "Enterprise"],
-        img: "https://s0.wp.com/mshots/v1/https%3A%2F%2Fcobit2019.divusi.co.id%2Flogin?w=800",
-        link: "https://cobit2019.divusi.co.id/login"
-    },
-    {
-        title: "LDR Photobooth",
-        desc: "IoT-connected remote photobooth system.",
-        tags: ["Cloudflare Workers", "WebSockets"],
-        img: "https://s0.wp.com/mshots/v1/https%3A%2F%2Fldr-photobooth.vercel.app%2F?w=800",
-        link: "https://ldr-photobooth.vercel.app/"
-    },
-    {
-        title: "Pratama Global Export",
-        desc: "International trade & export profile platform.",
-        tags: ["Bootstrap", "Global Trade"],
-        img: "https://s0.wp.com/mshots/v1/https%3A%2F%2Fpratamaglobalekspor.netlify.app%2F?w=800",
-        link: "https://pratamaglobalekspor.netlify.app/"
-    },
-    {
-        title: "Panen-Ku",
-        desc: "Agriculture marketplace connecting farmers to buyers.",
-        tags: ["React Native", "Firebase", "AgriTech"],
-        img: "https://s0.wp.com/mshots/v1/https%3A%2F%2Fpanen-ku.vercel.app%2F?w=800",
-        link: "https://panen-ku.vercel.app/"
-    },
-    {
-        title: "Chat Bot Semantic AI",
-        desc: "NLP-powered conversational AI assistant.",
-        tags: ["Python", "NLP", "AI"],
-        img: "https://s0.wp.com/mshots/v1/https%3A%2F%2Fchatbotsmartphone.vercel.app%2F?w=800",
-        link: "https://chatbotsmartphone.vercel.app/"
-    },
-    {
-        title: "Space Runner Game",
-        desc: "3D browser-based infinite runner.",
-        tags: ["Three.js", "WebGL", "Game Dev"],
-        img: "https://s0.wp.com/mshots/v1/https%3A%2F%2Ftubes-uas-grafkom.vercel.app%2F?w=800",
-        link: "https://tubes-uas-grafkom.vercel.app/"
-    }
-];
+import { Link } from 'react-router-dom';
+import { projects } from '../data/projects';
 
 const Projects = () => {
     const [activeProject, setActiveProject] = useState<number | null>(null);
@@ -113,11 +69,9 @@ const Projects = () => {
             {/* Project List */}
             <div className="projects-list">
                 {projects.map((proj, i) => (
-                    <a
-                        key={i}
-                        href={proj.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <Link
+                        key={proj.slug}
+                        to={`/project/${proj.slug}`}
                         className="project-item"
                         onMouseEnter={() => setActiveProject(i)}
                         onMouseLeave={() => setActiveProject(null)}
@@ -133,7 +87,7 @@ const Projects = () => {
                                 {proj.tags.map(tag => <span key={tag} className="tag">{tag}</span>)}
                             </div>
                         </div>
-                    </a>
+                    </Link>
                 ))}
             </div>
 
@@ -160,9 +114,9 @@ const Projects = () => {
                     width: 100%;
                     height: 100vh;
                     pointer-events: none;
-                    z-index: 0;
+                    z-index: 10;
                     overflow: hidden;
-                    display: none; /* Hidden on mobile by default, shown via JS on desktop if needed, or media query */
+                    display: none;
                 }
                 @media (min-width: 768px) {
                     .project-image-reveal {
@@ -180,7 +134,7 @@ const Projects = () => {
                     border-top: 1px solid white;
                     padding-top: 2rem;
                     display: flex;
-                    flex-direction: column; /* Stack by default on mobile */
+                    flex-direction: column;
                     gap: 1rem;
                     justify-content: space-between;
                     align-items: flex-start;
@@ -192,7 +146,7 @@ const Projects = () => {
                 }
                 @media (min-width: 768px) {
                     .project-item {
-                        flex-direction: row; /* Row on desktop */
+                        flex-direction: row;
                         align-items: flex-start;
                     }
                 }

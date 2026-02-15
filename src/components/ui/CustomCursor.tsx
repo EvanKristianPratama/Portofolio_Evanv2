@@ -26,12 +26,12 @@ const CustomCursor = () => {
             height: 32,
             width: 32,
             backgroundColor: "white",
-            mixBlendMode: "difference" as any,
+            mixBlendMode: "difference",
             borderRadius: "50%",
-            position: "fixed" as any,
+            position: "fixed",
             top: 0,
             left: 0,
-            pointerEvents: "none" as any,
+            pointerEvents: "none",
             zIndex: 9999
         }
     };
@@ -42,7 +42,7 @@ const CustomCursor = () => {
             animate="default"
             transition={{
                 type: "spring",
-                mass: 0.1, // Lightweight
+                mass: 0.1,
                 stiffness: 100,
                 damping: 20
             }}

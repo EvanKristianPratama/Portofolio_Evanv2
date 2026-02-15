@@ -1,4 +1,3 @@
-
 const Contact = () => {
     return (
         <section id="contact" style={{ padding: '8rem 2rem', background: 'white', color: 'black', minHeight: '80vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -7,7 +6,7 @@ const Contact = () => {
                 AVAILABLE FOR SELECT PROJECTS
             </h3>
 
-            <a href="mailto:contact@example.com" style={{ fontSize: '1.5rem', textDecoration: 'underline', marginBottom: '4rem', display: 'inline-block' }}>
+            <a href="mailto:evankristianpratama@gmail.com" style={{ fontSize: '1.5rem', textDecoration: 'underline', marginBottom: '4rem', display: 'inline-block' }}>
                 LET'S TALK
             </a>
 

@@ -1,4 +1,3 @@
-
 @use 'variables';
 
 * {
@@ -13,7 +12,7 @@ body {
   font-family: var(--font-main);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  cursor: none; /* Hide default cursor */
+  cursor: none;
 }
 
 a {

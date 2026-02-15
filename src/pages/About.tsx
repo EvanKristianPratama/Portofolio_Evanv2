@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 
-const revealVariants: any = {
+const revealVariants: Variants = {
     hidden: { opacity: 0, filter: "blur(10px)", y: 20 },
     visible: (i: number) => ({
         opacity: 1,

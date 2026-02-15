@@ -1,8 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 
 const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const location = useLocation();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 200);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const isHome = location.pathname === '/';
+    const shouldShowBurger = !isHome || scrolled;
 
     const scrollToSection = (id: string) => {
         if (id === 'home') {
@@ -27,37 +41,44 @@ const Navigation = () => {
     return (
         <>
             {/* Hamburger Button */}
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                style={{
-                    position: 'fixed',
-                    top: '2rem',
-                    right: '2rem',
-                    zIndex: 102,
-                    background: 'none',
-                    border: 'none',
-                    cursor: 'pointer',
-                    mixBlendMode: 'difference',
-                    color: 'white',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '6px',
-                    width: '40px'
-                }}
-            >
-                <motion.span
-                    animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 8 : 0 }}
-                    style={{ display: 'block', width: '100%', height: '2px', background: 'white' }}
-                />
-                <motion.span
-                    animate={{ opacity: isOpen ? 0 : 1 }}
-                    style={{ display: 'block', width: '100%', height: '2px', background: 'white' }}
-                />
-                <motion.span
-                    animate={{ rotate: isOpen ? -45 : 0, y: isOpen ? -8 : 0 }}
-                    style={{ display: 'block', width: '100%', height: '2px', background: 'white' }}
-                />
-            </button>
+            <AnimatePresence>
+                {shouldShowBurger && (
+                    <motion.button
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        onClick={() => setIsOpen(!isOpen)}
+                        style={{
+                            position: 'fixed',
+                            top: '2rem',
+                            right: '2rem',
+                            zIndex: 9999,
+                            background: 'none',
+                            border: 'none',
+                            cursor: 'pointer',
+                            mixBlendMode: 'difference',
+                            color: 'white',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '6px',
+                            width: '40px'
+                        }}
+                    >
+                        <motion.span
+                            animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 8 : 0 }}
+                            style={{ display: 'block', width: '100%', height: '2px', background: 'white' }}
+                        />
+                        <motion.span
+                            animate={{ opacity: isOpen ? 0 : 1 }}
+                            style={{ display: 'block', width: '100%', height: '2px', background: 'white' }}
+                        />
+                        <motion.span
+                            animate={{ rotate: isOpen ? -45 : 0, y: isOpen ? -8 : 0 }}
+                            style={{ display: 'block', width: '100%', height: '2px', background: 'white' }}
+                        />
+                    </motion.button>
+                )}
+            </AnimatePresence>
 
             {/* Backdrop Blur Overlay & Menu */}
             <AnimatePresence>
@@ -94,7 +115,7 @@ const Navigation = () => {
                                 right: 0,
                                 height: '100vh',
                                 width: '100%',
-                                maxWidth: '400px', // Drawer width
+                                maxWidth: '400px',
                                 background: 'rgba(0,0,0,0.8)',
                                 backdropFilter: 'blur(20px)',
                                 zIndex: 101,

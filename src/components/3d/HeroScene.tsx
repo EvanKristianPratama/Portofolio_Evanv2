@@ -1,53 +1,65 @@
-import { useRef } from 'react';
+import { useMemo, useRef, type ComponentProps } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as random from 'maath/random/dist/maath-random.esm';
+import type { Points as ThreePoints } from 'three';
 
-const Stars = (props: any) => {
-    const ref = useRef<any>(null);
-    // @ts-ignore
-    const sphere = random.inSphere(new Float32Array(5000), { radius: 1.5 }) as Float32Array;
+type StarsProps = Omit<ComponentProps<typeof Points>, 'positions' | 'colors' | 'stride'>;
 
-    // Generate random colors
-    const colors = new Float32Array(5000 * 3); // 3 values per point (RGB)
-    for (let i = 0; i < 5000 * 3; i++) {
-        colors[i] = Math.random();
-    }
+const createPseudoRandom = (seed: number) => {
+    return ((seed * 16807) % 2147483647) / 2147483647;
+};
+
+const Stars = (props: StarsProps) => {
+    const ref = useRef<ThreePoints | null>(null);
+    const sphere = useMemo(
+        () => random.inSphere(new Float32Array(15000), { radius: 1.5 }) as Float32Array,
+        []
+    );
+
+    const colors = useMemo(() => {
+        const generatedColors = new Float32Array(15000 * 3);
+        for (let i = 0; i < 15000; i++) {
+            // Mix of white, soft blue, and soft purple
+            const r = createPseudoRandom(i + 1);
+            if (r > 0.8) {
+                // Bluish
+                generatedColors[i * 3] = 0.7;
+                generatedColors[i * 3 + 1] = 0.8;
+                generatedColors[i * 3 + 2] = 1.0;
+            } else if (r > 0.6) {
+                // Purplish
+                generatedColors[i * 3] = 0.9;
+                generatedColors[i * 3 + 1] = 0.7;
+                generatedColors[i * 3 + 2] = 1.0;
+            } else {
+                // White
+                generatedColors[i * 3] = 1.0;
+                generatedColors[i * 3 + 1] = 1.0;
+                generatedColors[i * 3 + 2] = 1.0;
+            }
+        }
+        return generatedColors;
+    }, []);
 
     useFrame((_state, delta) => {
         if (ref.current) {
-            ref.current.rotation.x -= delta / 10;
-            ref.current.rotation.y -= delta / 15;
+            ref.current.rotation.x -= delta / 12;
+            ref.current.rotation.y -= delta / 18;
         }
     });
 
     return (
         <group rotation={[0, 0, Math.PI / 4]}>
-            <Points ref={ref} positions={sphere} stride={3} frustumCulled={false} {...props}>
+            <Points ref={ref} positions={sphere} colors={colors} stride={3} frustumCulled={false} {...props}>
                 <PointMaterial
                     transparent
                     vertexColors
-                    size={0.005}
+                    size={0.003}
                     sizeAttenuation={true}
                     depthWrite={false}
+                    opacity={0.8}
                 />
-                {/* @ts-ignore */}
-                <bufferGeometry attach="geometry">
-                    <bufferAttribute
-                        attach="attributes-position"
-                        count={sphere.length / 3}
-                        array={sphere}
-                        itemSize={3}
-                        args={[sphere, 3]}
-                    />
-                    <bufferAttribute
-                        attach="attributes-color"
-                        count={colors.length / 3}
-                        array={colors}
-                        itemSize={3}
-                        args={[colors, 3]}
-                    />
-                </bufferGeometry>
             </Points>
         </group>
     );
