@@ -1,6 +1,5 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="256" cy="256" r="256" fill="black"/>
-  <rect x="325" y="115" width="140" height="65" rx="32.5" transform="rotate(45 325 115)" fill="white"/>
-  <rect x="195" y="195" width="300" height="65" rx="32.5" transform="rotate(45 195 195)" fill="white"/>
-  <rect x="105" y="335" width="140" height="65" rx="32.5" transform="rotate(45 105 335)" fill="white"/>
+  <rect x="320" y="50" width="160" height="60" rx="30" transform="rotate(45 320 50)" fill="black"/>
+  <rect x="220" y="150" width="220" height="60" rx="30" transform="rotate(45 220 150)" fill="black"/>
+  <rect x="120" y="250" width="160" height="60" rx="30" transform="rotate(45 120 250)" fill="black"/>
 </svg>

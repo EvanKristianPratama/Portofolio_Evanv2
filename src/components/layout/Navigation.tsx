@@ -42,22 +42,6 @@ const Navigation = () => {
 
     return (
         <>
-            {/* Brand Logo */}
-            <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                style={{
-                    position: 'fixed',
-                    top: '2rem',
-                    left: '2rem',
-                    zIndex: 9999,
-                    cursor: 'pointer',
-                    mixBlendMode: 'difference'
-                }}
-                onClick={() => isHome ? scrollToSection('home') : window.location.href = '/'}
-            >
-            </motion.div>
-
             {/* Hamburger Button */}
             <AnimatePresence>
                 {shouldShowBurger && (
