@@ -1,4 +1,13 @@
 @use 'variables';
 @use 'reset';
 
-// Global Styles can go here
+// Global Styles
+::selection {
+    background: #ff6b00; // Vibrant orange
+    color: #000000;
+}
+
+::-moz-selection {
+    background: #ff6b00;
+    color: #000000;
+}
