@@ -1,3 +1,6 @@
+import cobit2 from '../assets/projects/cobit2019/cobit2.png';
+import cobit3 from '../assets/projects/cobit2019/cobit3.png';
+
 export interface Project {
     slug: string;
     title: string;
@@ -16,12 +19,12 @@ export const projects: Project[] = [
         desc: "Enterprise IT Governance Audit Tool.",
         longDesc: "A comprehensive tool designed for auditing and managing enterprise IT governance based on the COBIT 2019 framework. It helps organizations align their IT strategy with business goals, ensuring compliance and operational excellence.",
         tags: ["React", "Laravel", "Enterprise"],
-        img: "https://s0.wp.com/mshots/v1/https%3A%2F%2Fcobit2019.divusi.co.id%2Flogin?w=1200",
+        img: cobit2,
         link: "https://cobit2019.divusi.co.id/login",
         gallery: [
             "https://s0.wp.com/mshots/v1/https%3A%2F%2Fcobit2019.divusi.co.id%2Flogin?w=1200",
-            "https://images.unsplash.com/photo-1504868584819-f8e90526354a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1454165833767-027508496b4c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+            cobit2,
+            cobit3
         ]
     },
     {

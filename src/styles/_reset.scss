@@ -12,7 +12,12 @@ body {
   font-family: var(--font-main);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  cursor: none;
+}
+
+@media (hover: hover) {
+  body {
+    cursor: none;
+  }
 }
 
 a {

@@ -122,11 +122,7 @@ const Loader = ({ onComplete }: { onComplete: () => void }) => {
                     />
                 </div>
 
-                <motion.span
-                    style={{ display: 'block', marginTop: '1rem', fontSize: '0.9rem', opacity: 0.6, fontFamily: 'monospace' }}
-                >
-                    {Math.floor(Math.min(progress, 100))}%
-                </motion.span>
+
             </motion.div>
         </motion.div>
     );

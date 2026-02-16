@@ -354,6 +354,51 @@ const ExperienceDetail = () => {
                     color: #333;
                     font-weight: 300;
                 }
+                @media (max-width: 480px) {
+                    .experience-detail-page {
+                        padding: 5rem 0;
+                    }
+                    .back-btn {
+                        width: 45px;
+                        height: 45px;
+                        top: 15px;
+                        left: 15px;
+                        font-size: 0.55rem;
+                    }
+                    .back-icon {
+                        font-size: 1.1rem;
+                        margin-top: 2px;
+                    }
+                    .awwwards-detail-header {
+                        margin-bottom: 3rem;
+                    }
+                    .awwwards-gallery-nav {
+                        bottom: 0.6rem;
+                        padding: 0.3rem 0.8rem;
+                        gap: 0.8rem;
+                        font-size: 0.6rem;
+                        background: rgba(255,255,255,0.5);
+                    }
+                    .awwwards-gallery-nav button {
+                        font-size: 0.55rem;
+                        letter-spacing: 1px;
+                    }
+                    .awwwards-gallery-dots {
+                        bottom: 3rem;
+                        gap: 0.5rem;
+                    }
+                    .dot {
+                        width: 6px;
+                        height: 6px;
+                    }
+                    .experience-role-period h2 {
+                        font-size: 1.2rem;
+                    }
+                    .awwwards-description p {
+                        font-size: 1rem;
+                        line-height: 1.6;
+                    }
+                }
             `}</style>
         </motion.div>
     );

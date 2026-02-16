@@ -384,6 +384,52 @@ const ProjectDetail = () => {
                 .awwwards-visit-btn:hover .btn-arrow {
                     transform: translate(5px, -5px);
                 }
+                @media (max-width: 480px) {
+                    .project-detail-page {
+                        padding: 5rem 0;
+                    }
+                    .back-btn {
+                        width: 45px;
+                        height: 45px;
+                        top: 15px;
+                        left: 15px;
+                        font-size: 0.55rem;
+                    }
+                    .back-icon {
+                        font-size: 1.1rem;
+                        margin-top: 2px;
+                    }
+                    .awwwards-detail-header {
+                        margin-bottom: 3rem;
+                    }
+                    .awwwards-gallery-nav {
+                        bottom: 0.6rem;
+                        padding: 0.3rem 0.8rem;
+                        gap: 0.8rem;
+                        font-size: 0.6rem;
+                        background: rgba(0,0,0,0.5);
+                    }
+                    .awwwards-gallery-nav button {
+                        font-size: 0.55rem;
+                        letter-spacing: 1px;
+                    }
+                    .awwwards-gallery-dots {
+                        bottom: 3rem;
+                        gap: 0.5rem;
+                    }
+                    .dot {
+                        width: 6px;
+                        height: 6px;
+                    }
+                    .awwwards-description p {
+                        font-size: 1rem;
+                        line-height: 1.6;
+                    }
+                    .awwwards-visit-btn {
+                        padding: 1.5rem;
+                        font-size: 0.8rem;
+                    }
+                }
             `}</style>
         </motion.div>
     );

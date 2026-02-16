@@ -6,7 +6,7 @@ import { calculateDuration } from '../utils/date';
 const Experience = () => {
     return (
         <section id="experience" style={{
-            padding: '6rem 2rem',
+            padding: 'clamp(3rem, 6vw, 6rem) clamp(1rem, 4vw, 2rem)',
             background: 'white',
             color: 'black',
             minHeight: '80vh',

@@ -17,7 +17,7 @@ const revealVariants: Variants = {
 
 const About = () => {
     return (
-        <section id="about" style={{ padding: '6rem 2rem', background: 'white', color: 'black', minHeight: '100vh', position: 'relative', zIndex: 1 }}>
+        <section id="about" style={{ padding: 'clamp(3rem, 6vw, 6rem) clamp(1rem, 4vw, 2rem)', background: 'white', color: 'black', minHeight: '100vh', position: 'relative', zIndex: 1 }}>
             <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
                 <motion.h2
                     custom={0}
