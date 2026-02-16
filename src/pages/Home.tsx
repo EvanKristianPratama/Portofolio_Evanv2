@@ -5,6 +5,7 @@ import About from './About';
 import Experience from './Experience';
 import Projects from './Projects';
 import Contact from './Contact';
+import TextScramble from '../components/ui/TextScramble';
 
 const Home = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -33,7 +34,7 @@ const Home = () => {
                         width: '100%',
                         textAlign: 'center',
                         color: 'white',
-                        pointerEvents: 'none',
+                        pointerEvents: 'auto',
                         mixBlendMode: 'difference',
                         opacity,
                         scale,
@@ -58,7 +59,7 @@ const Home = () => {
                             animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
                             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
                             style={{
-                                fontSize: 'clamp(4rem, 18vw, 14rem)',
+                                fontSize: 'clamp(3rem, 15vw, 11rem)',
                                 fontWeight: 900,
                                 letterSpacing: '-0.02em',
                                 lineHeight: 1,
@@ -67,7 +68,7 @@ const Home = () => {
                                 display: 'block'
                             }}
                         >
-                            EVAN
+                            <TextScramble phrases={['EVAN', 'DEVELOPER', 'ENGINEER', 'PRATAMA', 'CREATOR']} />
                         </motion.h1>
 
                     </motion.div>
